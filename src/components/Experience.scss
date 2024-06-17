@@ -1,0 +1,75 @@
+.experience {
+  padding-bottom: 80px;
+}
+
+.experience-bar {
+  text-align: center;
+  padding: 80px 0 160px 0;
+  background-color: #A3C6C4;
+  display: flex;
+  justify-content: center;
+}
+
+.experience-bar-text {
+width: 70%;
+display: flex;
+text-align: left;
+flex-direction: column;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  margin: -80px auto 0 auto;
+  align-items: center;
+}
+
+.experience-card{
+  width: 70%;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #E6ECF8;
+  background-color: #fff;
+}
+
+.experience-card:last-child{
+  margin-bottom: 0;
+}
+
+.company-logos {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.company-logos img {
+  max-height: 50px;
+}
+
+h3 {
+  margin: 10px 0;
+  font-size: 1.5em;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tech-item {
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.more-link {
+  margin-top: 20px;
+  align-self: flex-end;
+  color: #007bff;
+  text-decoration: none;
+}

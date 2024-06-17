@@ -24,7 +24,7 @@ const App = () => {
       <ThemeProvider theme={portfolioTheme}>
         <CssBaseline/>
         <BrowserRouter>
-          <Header/>
+          {/* <Header/> */}
           <Routes>
             <Route exact path="/" element={<Home />} />
           </Routes>

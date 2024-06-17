@@ -1,12 +1,23 @@
 import React from "react";
 import SideNav from "../components/SideNav";
-import MainContent from "../components/MainContent";
+import Landing from "../components/Landing";
+import Intro from "../components/Intro";
+import Experience from "../components/Experience";
+import Projects from "../components/Projects";
+import Contact from "../components/Contact";
+import Header from "../components/Header";
 
 const Home = () => {
   return (
     <>
-      <SideNav />
-      <MainContent />
+      {/* <SideNav /> */}
+
+      <Header />
+      <Landing />
+      <Intro />
+      <Experience />
+      <Projects />
+      <Contact />
     </>
   );
 };
