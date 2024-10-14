@@ -15,8 +15,8 @@ const Home = () => {
       <Header />
       <Landing />
       <Intro />
-      <Experience />
       <Projects />
+      <Experience />
       <Contact />
     </>
   );

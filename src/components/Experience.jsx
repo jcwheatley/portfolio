@@ -1,49 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Experience.scss";
 import { Typography } from "@mui/material";
 
-const experience = [
+// Import logos
+import RaytheonLogo from "../images/raytheon.png";
+import DarpaLogo from "../images/darpa.png";
+import DHSLogo from "../images/dhs.png";
+import PyramidLogo from "../images/pyramid.png";
+import DIALogo from "../images/dia.png";
+import resumePDF from "../images/resume.pdf";
+
+const experienceData = [
   {
-    company: "Raytheon",
-    client: "DIA",
+    company: RaytheonLogo,
+    clientLogo: DIALogo,
+    client: "Defense Intelligence Agency (DIA)",
     title: "Lead Full Stack Engineer",
-    summary:
-      "Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution.",
+    contribution:
+      "Developed a full-stack, drag and drop interface that provides users with an intuitive way to search, organize, and analyze important data from dozens of API endpoints.",
     technologies: [
       "React",
-      "Redux",
+      "Node",
+      "MongoDB",
       "Sass",
       "Material UI",
-      "Redux",
-      "MongoDB",
+      "InteractJS",
+      "UX/UI Design",
       "Invision Studio",
       "Git",
       "Openshift",
     ],
   },
   {
-    company: "Raytheon",
-    client: "DARPA",
+    company: RaytheonLogo,
+    clientLogo: DarpaLogo,
+    client: "Defense Advanced Research Projects Agency (DARPA)",
     title: "Front-end Engineer",
-    summary:
-      "Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution.",
+    contribution:
+      "Improved application performance and optimized React components.",
     technologies: [
       "React",
       "Redux",
       "Sass",
       "Material UI",
-      "Redux",
       "MongoDB",
       "Invision Studio",
       "Git",
     ],
   },
   {
-    company: "Raytheon",
-    client: "DHS",
+    company: RaytheonLogo,
+    clientLogo: DHSLogo,
+    client: "Department of Homeland Security (DHS)",
     title: "Front-end Engineer",
-    summary:
-      "Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution.",
+    contribution:
+      "Worked on front-end modernization using Angular and TypeScript.",
     technologies: [
       "Angular",
       "Typescript",
@@ -53,68 +64,115 @@ const experience = [
     ],
   },
   {
-    company: "Pyramid",
-    client: "DHS",
+    company: PyramidLogo,
+    clientLogo: DHSLogo,
+    client: "Department of Homeland Security (DHS)",
     title: "Front-end Engineer, UX/UI Lead",
-    summary:
-      "Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution. Quick summary of my contribution.",
+    contribution:
+      "Led UX/UI efforts for a modernization project and implemented features using React.",
     technologies: ["React", "Sass", "MongoDB", "Invision Studio", "Git"],
   },
 ];
 
-const Experience = () => {
+const ExperienceCard = ({ experience }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpand = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
   return (
-    <section id='experience' className='experience'>
-      <div className='experience-bar'>
-        <div className='experience-bar-text'>
-          <Typography variant='h5' sx={{ fontWeight: "bold" }}>
-            Professional Experience
-          </Typography>
-          <br />
-          <Typography variant='subtitle1'>
-            With all my work experience being in the defense/public sector, I'm
-            unable to show off any of that work. I've included some other fun
-            projects I've created in my free time in the next section. Download
-            my resume
-            <a href='/resume.pdf' target='_blank' rel='noopener noreferrer'>
-              {" "}
-              here
-            </a>
-            .
-          </Typography>
+    <div
+      className={`experience-card ${isExpanded ? "expanded" : ""}`}
+      onClick={toggleExpand}
+    >
+      <div className='card-header'>
+        <div className='logo-container'>
+          <img src={experience.company} alt='Company Logo' className='logo' />
+          <span className='separator'>×</span>
+          <img
+            src={experience.clientLogo}
+            alt={experience.client}
+            className='logo'
+          />
         </div>
+
+        <Typography
+          variant='h5'
+          className='job-title'
+          sx={{ fontWeight: "bold" }}
+        >
+          {experience.title}
+        </Typography>
+
+        <button
+          className='toggle-button'
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleExpand();
+          }}
+        >
+          {isExpanded ? "−" : "+"}
+        </button>
       </div>
 
-      <div className='experience-list'>
-        {experience.map((exp, index) => (
-          <div key={index} className='experience-card'>
-            <div className='company-logos'>
-              <img
-                src={require(`../images/${exp.company.toLowerCase()}.png`)}
-                alt={exp.company}
-              />
-              <img
-                src={require(`../images/${exp.client.toLowerCase()}.png`)}
-                alt={exp.partner}
-              />
-            </div>
-            <h3>{exp.title}</h3>
-            <p>{exp.summary}</p>
-            <div className='technologies'>
-              {exp.technologies.map((tech, techIndex) => (
-                <span key={techIndex} className='tech-item'>
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <a href={`/experience/${index}`} className='more-link'>
-              More &gt;
-            </a>
+      <div className='card-content'>
+        <div className='section'>
+          <h5>CLIENT</h5>
+          <p>{experience.client}</p>
+        </div>
+
+        <div className='section'>
+          <h5>MY CONTRIBUTION</h5>
+          <p>{experience.contribution}</p>
+        </div>
+
+        <div className='section'>
+          <h5>TECH & TOOLS</h5>
+          <div className='technologies'>
+            {experience.technologies.map((tech, index) => (
+              <span key={index} className='tech-item'>
+                {tech}
+              </span>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
+
+const Experience = () => (
+  <section id='experience' className='experience'>
+    <div className='experience-bar'>
+      <div className='experience-bar-text'>
+        <Typography variant='h4' sx={{ fontWeight: "bold" }}>
+          Professional Experience
+        </Typography>
+        <br />
+        <Typography variant='subtitle1'>
+          With all my work experience being in the defense/public sector, I’m
+          unable to show off any of that work. Download my resume{" "}
+          <a
+            href={resumePDF}
+            target='_blank'
+            rel='noopener noreferrer'
+            download='James_Wheatley_Resume.pdf'
+            className='resume-link'
+          >
+            here
+          </a>
+          .
+        </Typography>
+      </div>
+    </div>
+
+    <div className='experience-list'>
+      {experienceData.map((exp, index) => (
+        <ExperienceCard key={index} experience={exp} />
+      ))}
+    </div>
+  </section>
+);
 
 export default Experience;

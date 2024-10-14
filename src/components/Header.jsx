@@ -14,9 +14,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const drawerWidth = 240;
-const navItems = ["LinkedIn", "Github", "Contact"];
+const navItems = ["Skills", "Projects", "Experience"];
 
 const Header = (props) => {
   const { window } = props;
@@ -26,21 +28,77 @@ const Header = (props) => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const handleScroll = (id) => {
+    const section = document.getElementById(id);
+    section.scrollIntoView({ behavior: "smooth" });
+  };
+
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box
+      sx={{
+        textAlign: "center",
+        width: drawerWidth,
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+      }}
+    >
       <Typography variant='h6' sx={{ my: 2 }}>
-        MUI
+        JAMES WHEATLEY
       </Typography>
       <Divider />
-      <List>
+      <List sx={{ flexGrow: 1 }}>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton
+              sx={{ textAlign: "center" }}
+              onClick={() => handleScroll(item.toLowerCase())}
+            >
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem disablePadding>
+          <ListItemButton
+            sx={{ justifyContent: "center", mt: 2 }}
+            onClick={() => handleScroll("contact")}
+          >
+            <Button
+              variant='contained'
+              sx={{
+                backgroundColor: "#CE7B65",
+                color: "#fff",
+                fontWeight: "bold", // Bold text
+                borderRadius: "50px",
+                "&:hover": { backgroundColor: "#B76558" },
+              }}
+            >
+              Contact Me
+            </Button>
+          </ListItemButton>
+        </ListItem>
       </List>
+      {/* Icons at the bottom of the drawer */}
+      <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 2 }}>
+        <IconButton
+          component='a'
+          href='https://github.com/your-profile'
+          target='_blank'
+          rel='noopener noreferrer'
+          sx={{ color: "#000" }}
+        >
+          <GitHubIcon />
+        </IconButton>
+        <IconButton
+          component='a'
+          href='https://linkedin.com/in/your-profile'
+          target='_blank'
+          rel='noopener noreferrer'
+          sx={{ color: "#0A66C2" }}
+        >
+          <LinkedInIcon />
+        </IconButton>
+      </Box>
     </Box>
   );
 
@@ -51,16 +109,7 @@ const Header = (props) => {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position='fixed' component='nav' style={{ background: "#fff" }}>
-        <Toolbar>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            edge='start'
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
+        <Toolbar sx={{ position: "relative" }}>
           <Typography
             variant='h6'
             component='div'
@@ -70,31 +119,60 @@ const Header = (props) => {
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "#000",
-              display: { xs: "none", sm: "block" },
+              textAlign: "left",
             }}
           >
             JAMES WHEATLEY
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+
+          <IconButton
+            color='inherit'
+            aria-label='open drawer'
+            edge='end'
+            onClick={handleDrawerToggle}
+            sx={{ display: { md: "none" }, color: "#000", ml: "auto" }}
+          >
+            <MenuIcon />
+          </IconButton>
+
+          <Box sx={{ display: { xs: "none", md: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#000" }}>
+              <Button
+                key={item}
+                onClick={() => handleScroll(item.toLowerCase())}
+                sx={{ color: "#000", ml: 2 }}
+              >
                 {item}
               </Button>
             ))}
+            <Button
+              variant='contained'
+              onClick={() => handleScroll("contact")}
+              sx={{
+                backgroundColor: "#CE7B65",
+                color: "#fff",
+                fontWeight: "bold", // Bold text
+                borderRadius: "50px",
+                ml: 2,
+                "&:hover": { backgroundColor: "#B76558" },
+              }}
+            >
+              Contact Me
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
+
       <nav>
         <Drawer
           container={container}
+          anchor='right'
           variant='temporary'
           open={mobileOpen}
           onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+          ModalProps={{ keepMounted: true }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", md: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
@@ -109,10 +187,6 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 

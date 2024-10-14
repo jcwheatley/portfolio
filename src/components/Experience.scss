@@ -1,57 +1,124 @@
+@import '../styles/variables';
+
 .experience {
   padding-bottom: 80px;
 }
 
 .experience-bar {
   text-align: center;
-  padding: 80px 0 160px 0;
-  background-color: #A3C6C4;
+  padding: 60px 0 130px 0;
+  background-color: $primary-color;
   display: flex;
   justify-content: center;
 }
 
 .experience-bar-text {
-width: 70%;
-display: flex;
-text-align: left;
-flex-direction: column;
+  color: #fff;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .experience-list {
   display: flex;
   flex-direction: column;
-  margin: -80px auto 0 auto;
+  margin: -60px auto 0 auto;
   align-items: center;
 }
 
-.experience-card{
+.experience-card {
   width: 70%;
   border-radius: 8px;
-  padding: 20px;
-  margin: 20px;
+  padding: 20px 30px;
+  margin: 15px 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   border: 1px solid #E6ECF8;
   background-color: #fff;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 126px;
 }
 
-.experience-card:last-child{
-  margin-bottom: 0;
+.experience-card:hover {
+  background-color: #f7f7f7;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
 }
 
-.company-logos {
+.experience-card.expanded {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  gap: 10px;
+  padding: 12px 0;
 }
 
-.company-logos img {
-  max-height: 50px;
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
-h3 {
-  margin: 10px 0;
-  font-size: 1.5em;
+/* Company logo size */
+.logo:first-child {
+  width: 90px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+}
+
+.separator {
+  margin: 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.job-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.6em;
+  margin: 0;
+}
+
+.toggle-button {
+  background-color: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 0;
+}
+
+.toggle-button:hover {
+  transform: scale(1.15);
+}
+
+.card-content {
+  padding-left: 225px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.experience-card.expanded .card-content {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.section {
+  margin-bottom: 20px;
 }
 
 .technologies {
@@ -67,9 +134,56 @@ h3 {
   border-radius: 5px;
 }
 
-.more-link {
-  margin-top: 20px;
-  align-self: flex-end;
-  color: #007bff;
-  text-decoration: none;
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  .experience-card {
+    width: 90%; /* Use more space on smaller screens */
+    margin: 10px 0; /* Less margin between cards */
+    padding: 15px; /* Reduced padding for better fit */
+  }
+
+  .card-header {
+    flex-direction: row; /* Stack elements vertically */
+    align-items: center;
+    gap: 5px; /* Adjust gap */
+  }
+
+  .logo-container {
+    justify-content: center;
+    margin-bottom: 10px; /* Spacing between logos and title */
+  }
+
+  .logo:first-child {
+    width: 60px; /* Adjust logo size */
+  }
+
+  .logo {
+    width: 40px; /* Smaller client logo size */
+  }
+
+  .separator {
+    font-size: 18px; /* Adjust separator size */
+  }
+
+  .job-title {
+    font-size: 1em !important; /* Adjust title font size */
+  }
+
+  .card-content {
+    padding-left: 0; /* Remove padding on smaller screens */
+  }
+
+  .section {
+    flex-direction: column; /* Stack section content */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .technologies {
+    justify-content: center; /* Center tech tags */
+    gap: 8px; /* Adjust spacing */
+  }
+
+  .tech-item {
+    font-size: 14px; /* Adjust tech tag font size */
+  }
 }
