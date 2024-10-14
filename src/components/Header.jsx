@@ -31,6 +31,7 @@ const Header = (props) => {
   const handleScroll = (id) => {
     const section = document.getElementById(id);
     section.scrollIntoView({ behavior: "smooth" });
+    handleDrawerToggle();
   };
 
   const drawer = (
@@ -44,7 +45,7 @@ const Header = (props) => {
       }}
     >
       <Typography variant='h6' sx={{ my: 2 }}>
-        JAMES WHEATLEY
+        SECTIONS
       </Typography>
       <Divider />
       <List sx={{ flexGrow: 1 }}>
@@ -82,7 +83,7 @@ const Header = (props) => {
       <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 2 }}>
         <IconButton
           component='a'
-          href='https://github.com/your-profile'
+          href='https://github.com/jcwheatley'
           target='_blank'
           rel='noopener noreferrer'
           sx={{ color: "#000" }}
@@ -91,7 +92,7 @@ const Header = (props) => {
         </IconButton>
         <IconButton
           component='a'
-          href='https://linkedin.com/in/your-profile'
+          href='https://linkedin.com/in/jcwheatley'
           target='_blank'
           rel='noopener noreferrer'
           sx={{ color: "#0A66C2" }}

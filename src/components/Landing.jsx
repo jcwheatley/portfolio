@@ -11,7 +11,11 @@ const Landing = () => {
   return (
     <>
       <section id='intro' className='landing'>
-        <Typography variant='h4' gutterBottom sx={{ fontWeight: "bold" }}>
+        <Typography
+          variant='h4'
+          gutterBottom
+          sx={{ fontWeight: "bold", padding: "0 20px 0 20px" }}
+        >
           Front-end Developer + UX/UI Designer
         </Typography>
         <img
