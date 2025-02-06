@@ -31,7 +31,7 @@ const Header = (props) => {
   const handleScroll = (id) => {
     const section = document.getElementById(id);
     section.scrollIntoView({ behavior: "smooth" });
-    handleDrawerToggle();
+    setMobileOpen(false);
   };
 
   const drawer = (
@@ -104,7 +104,7 @@ const Header = (props) => {
   );
 
   const container =
-    window !== undefined ? () => window().document.body : undefined;
+    window !== undefined ? () => window.document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -171,7 +171,7 @@ const Header = (props) => {
           variant='temporary'
           open={mobileOpen}
           onClose={handleDrawerToggle}
-          ModalProps={{ keepMounted: true }}
+          ModalProps={{ keepMounted: false, disableScrollLock: true }}
           sx={{
             display: { xs: "block", md: "none" },
             "& .MuiDrawer-paper": {

@@ -4,10 +4,10 @@ import { Button, Typography } from "@mui/material";
 
 const projects = [
   {
-    title: "TL Manager (In Progress)",
-    image: require("../images/TL-manager.png"),
+    title: "Sample Title",
+    image: require("../images/app-placeholder.png"),
     description:
-      "A new web app to help employees log their work, pass off training checklist items, schedule work hours, and much more! ",
+      "A new project messing around with some technologies that I'm interested in.",
     technologies: [
       "React",
       "Node",
@@ -20,22 +20,36 @@ const projects = [
     ],
   },
   {
-    title: "TL Scheduler",
-    image: require("../images/TL-scheduler.png"),
-    description: "A web app to help employees schedule their work hours.",
+    title: "Sample Title",
+    image: require("../images/app-placeholder.png"),
+    description:
+      "A new project messing around with some technologies that I'm interested in.",
     technologies: [
       "React",
+      "Node",
+      "MongoDB",
+      "Express",
+      "Redux",
+      "Sass",
       "UX/UI Design",
-      "Firebase",
-      "Material UI",
-      "Invision Studio",
+      "Figma",
     ],
   },
   {
-    title: "Threaded Leather ",
-    image: require("../images/TL-home.png"),
-    description: "My side business for the last 9 years.",
-    technologies: ["UX/UI Design", "Management", "Small Business"],
+    title: "Sample Title",
+    image: require("../images/app-placeholder.png"),
+    description:
+      "A new project messing around with some technologies that I'm interested in.",
+    technologies: [
+      "React",
+      "Node",
+      "MongoDB",
+      "Express",
+      "Redux",
+      "Sass",
+      "UX/UI Design",
+      "Figma",
+    ],
   },
   // {
   //   title: "Project1",
