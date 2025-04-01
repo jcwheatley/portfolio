@@ -38,30 +38,25 @@
   background-color: #fff;
   overflow: hidden;
   transition: transform 0.2s ease;
-  cursor: pointer;
+  // cursor: pointer;
   min-width: 250px;
   display: flex;
-  flex-direction: column; /* Ensure vertical stacking */
-  align-items: center; /* Center content horizontally */
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.project-card:hover {
-  background-color: #f7f7f7;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
+.project-card.wide {
+  flex: 1 1 100%;
 }
 
 .project-image {
-  width: 100%; /* Full width */
-  height: 200px; /* Fixed height */
-  object-fit: contain; /* Ensure the entire image is displayed */
-  object-position: center; /* Center the image within its box */
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
   border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-image {
-  transform: scale(1.05); /* Slight zoom on hover */
+  // transition: transform 0.3s ease;
 }
 
 .project-overlay {
@@ -82,15 +77,20 @@
   padding: 10px;
 }
 
-.project-card:hover .project-overlay {
-  opacity: 1;
+
+.project-description {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+  line-height: 1.5;
+  align-items: left;
 }
 
 .technologies {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 10px;
+  margin: 10px 0 10px 0;
 }
 
 .tech-item {
@@ -101,6 +101,17 @@
   font-size: 14px;
 }
 
+.project-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+
+  button {
+    flex: 1;
+    min-width: 100px;
+  }
+}
+
 /* Media Query for Smaller Screens */
 @media (max-width: 768px) {
   .project-list {
@@ -109,20 +120,20 @@
   }
 
   .project-card {
-    flex: 1 1 100%; /* Cards take full width on small screens */
+    flex: 1 1 100%;
     margin-bottom: 20px;
   }
 
   .project-image {
-    height: 250px; /* Adjust height for smaller screens */
-    object-fit: contain; /* Ensure the entire image is visible */
+    height: 250px;
+    object-fit: contain;
   }
 
   .technologies {
-    justify-content: center; /* Center tech tags */
+    justify-content: center;
   }
 
   .tech-item {
-    font-size: 14px; /* Adjust font size for smaller screens */
+    font-size: 14px;
   }
 }
