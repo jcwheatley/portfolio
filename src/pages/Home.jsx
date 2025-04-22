@@ -1,5 +1,4 @@
 import React from "react";
-import SideNav from "../components/SideNav";
 import Landing from "../components/Landing";
 import Intro from "../components/Intro";
 import Experience from "../components/Experience";
